@@ -1,0 +1,243 @@
+---
+title: "Species Figures"
+format: html
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+library(lubridate)
+
+data <- read.csv("BatData.csv") |> select(date, year, Station:Northing)
+
+long <- data |> pivot_longer(ANPA:MYYU, names_to = "Spp", values_to = "values") |> filter(values == 1)
+
+long <- long |> mutate(monthday = substr(date, 6, nchar(date)))
+
+```
+
+Elevation graphs
+
+```{r}
+longMYYU <- long |> filter(Spp == "MYYU")
+ggplot(longMYYU, aes(monthday, Elevation, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+
+ggplot(longMYYU, aes(monthday, BEC, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+#ggsave("MYYUele.jpg", height = 30, width = 60, units = "cm")
+```
+
+```{r}
+longANPA <- long |> filter(Spp == "ANPA")
+ggplot(longANPA, aes(monthday, Elevation, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+
+ggplot(longANPA, aes(monthday, BEC, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+#ggsave("ANPAele.jpg", height = 30, width = 60, units = "cm")
+```
+
+```{r}
+longCOTO <- long |> filter(Spp == "COTO")
+ggplot(longCOTO, aes(monthday, Elevation, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+
+ggplot(longCOTO, aes(monthday, BEC, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+#ggsave("COTOele.jpg", height = 30, width = 60, units = "cm")
+```
+
+```{r}
+longEPFU <- long |> filter(Spp == "EPFU")
+ggplot(longEPFU, aes(monthday, Elevation, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+
+ggplot(longEPFU, aes(monthday, BEC, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+#ggsave("EPFUele.jpg", height = 30, width = 60, units = "cm")
+```
+
+```{r}
+longLACI <- long |> filter(Spp == "LACI")
+ggplot(longLACI, aes(monthday, Elevation, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+
+ggplot(longLACI, aes(monthday, BEC, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+#ggsave("LACIele.jpg", height = 30, width = 60, units = "cm")
+```
+
+```{r}
+longLANO <- long |> filter(Spp == "LANO")
+ggplot(longLANO, aes(monthday, Elevation, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+
+ggplot(longLANO, aes(monthday, BEC, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+
+#ggsave("LANOele.jpg", height = 30, width = 60, units = "cm")
+```
+
+```{r}
+longMYCA <- long |> filter(Spp == "MYCA")
+ggplot(longMYCA, aes(monthday, Elevation, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+
+ggplot(longMYCA, aes(monthday, BEC, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+
+#ggsave("MYCAele.jpg", height = 30, width = 60, units = "cm")
+```
+
+```{r}
+longMYCI <- long |> filter(Spp == "MYCI")
+ggplot(longMYCI, aes(monthday, Elevation, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+
+ggplot(longMYCI, aes(monthday, BEC, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+
+#ggsave("MYCIele.jpg", height = 30, width = 60, units = "cm")
+```
+
+```{r}
+longMYEV <- long |> filter(Spp == "MYEV")
+ggplot(longMYEV, aes(monthday, Elevation, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+
+ggplot(longMYEV, aes(monthday, BEC, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+#ggsave("MYEVele.jpg", height = 30, width = 60, units = "cm")
+```
+
+```{r}
+longMYLU <- long |> filter(Spp == "MYLU")
+ggplot(longMYLU, aes(monthday, Elevation, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+
+ggplot(longMYLU, aes(monthday, BEC, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+
+#ggsave("MYLUele.jpg", height = 30, width = 60, units = "cm")
+```
+
+```{r}
+longMYTH <- long |> filter(Spp == "MYTH")
+ggplot(longMYTH, aes(monthday, Elevation, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+
+ggplot(longMYTH, aes(monthday, BEC, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+#ggsave("MYTHele.jpg", height = 30, width = 60, units = "cm")
+```
+
+```{r}
+longMYVO <- long |> filter(Spp == "MYVO")
+ggplot(longMYVO, aes(monthday, Elevation, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+
+ggplot(longMYVO, aes(monthday, BEC, col = as.factor(year))) +
+  geom_point() +
+  scale_x_discrete(guide = guide_axis(angle = 90)) 
+#ggsave("MYVOele.jpg", height = 30, width = 60, units = "cm")
+```
+
+# Animation
+
+Data setup
+
+Add week column, so frames can be weekly
+
+adding location lat and long
+
+```{r}
+library(sf)
+library(mapview)
+df <- data |> mutate(date = ymd(date)) |> 
+  mutate(week = strftime(date, format = "%V")) 
+
+
+dflong <- df |>  pivot_longer(ANPA:MYYU, names_to = "Spp", values_to = "values") |> filter(values == 1)
+dflong <- dflong |>  select(date, year, Station, UTM:Spp)
+
+#loc_data <- dflong |> group_by(Station) |> 
+#  select(Elevation:Northing)
+#loc_data <- loc_data[!duplicated(loc_data), ]
+
+weeksummary <- dflong |> group_by(Station, week, year, Spp) |> summarise(total = n())
+
+#ani_data <- left_join(weeksummary, loc_data, by = "Station")
+
+#Same location data from .shp file
+location_data <- st_read("AEW Bat Baseline Locations.shp")
+
+monitor_locations <- location_data[9:20,]
+monitor_locations <- monitor_locations |> 
+  mutate(Station = c("BAT-09", "BAT-11", "BAT-10", "BAT-06", 
+                                        "BAT-12", "BAT-08", "BAT-07", "BAT-05",
+                                        "BAT-03", "BAT-01", "BAT-04", "BAT-02")) |> 
+  select(Station, Zone:Northing, geometry)
+
+ani_data <- left_join(weeksummary, monitor_locations, by = 'Station')
+mapview(ani_data$geometry)
+
+map_w_data <- mapview(ani_data$geometry)
+
+# make bounding box
+#bbox <- st_as_sf(monitor_locations, coord = c("Northing", "Easting", crs = 26910))
+#bbox <- st_as_sfc(st_bbox(bbox))
+#mapview(bbox)
+
+#need lat and long for ggmap
+
+loc <- read.csv("loclocloc.csv")
+
+ani_data <- left_join(weeksummary, loc, by = "Station")
+```
+
+Let's get these suckers animated!
+
+```{r}
+library(gganimate)
+library(ggplot2)
+library(ggmap)
+library(osmdata)
+
+ggmap::register_stadiamaps("fa5ac40e-3353-4f77-8279-46ac76a142b3")
+
+bbox <- c(-121.4469, 49.3944, -120.1016, 50.6557)
+
+
+base_map <- get_stadiamap(bbox, maptype = "stamen_terrain") |> ggmap()
+
+qmplot(Longitude, Latitude, data = ani_data, maptype = "stamen_terrain",
+       color = I("red"))
+
+qmplot(lon, lat, data = df, maptype = "stamen_toner_lite", color = I("red"))
+
+
+```
